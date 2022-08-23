@@ -8,9 +8,9 @@
                 <div class="card-body">
                     <form class="d-flex flex-column align-items-center" method="POST" action="{{route('restaurant.store')}}">
                         <div class="col-md-4 ms-3 mb-3">
-                            Name: <input type="text" name="restaurant_name">
-                            Code: <input type="text" name="restaurant_code">
-                            Address: <input type="text" name="restaurant_address">
+                            Name: <input type="text" name="restaurant_name" required>
+                            Code: <input type="text" name="restaurant_code" required>
+                            Address: <input type="text" name="restaurant_address" required>
                         </div>
                         @csrf
                         <button class="btn btn-outline-success mt-3" type="submit">Create</button>

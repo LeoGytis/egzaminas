@@ -9,7 +9,7 @@
                 <div class="card-body">
                     <form class="d-flex flex-column align-items-center" method="POST" action="{{route('menu.update', $menu)}}">
                         <div class="col-md-4 ms-3 mb-3">
-                            Name: <input type="text" name="menu_name" value="{{$menu->name}}"><br>
+                            Name: <input type="text" name="menu_name" value="{{$menu->name}}" required><br>
                             <select class="mt-3" name="restaurant_id">
                                 @foreach ($restaurants as $restaurant)
                                 <option value="{{$restaurant->id}}" @if($restaurant->id == $menu->restaurant_id) selected @endif>

@@ -9,9 +9,9 @@
                 <div class="card-body">
                     <form class="d-flex flex-column align-items-center" method="POST" action="{{route('restaurant.update', $restaurant)}}">
                         <div class="col-md-4 ms-3 mb-3">
-                            Name: <input type="text" name="restaurant_name" value="{{$restaurant->name}}"><br>
-                            Code: <input type="text" name="restaurant_code" value="{{$restaurant->code}}"><br>
-                            Address: <input type="text" name="restaurant_address" value="{{$restaurant->address}}"><br>
+                            Name: <input type="text" name="restaurant_name" value="{{$restaurant->name}}" required><br>
+                            Code: <input type="text" name="restaurant_code" value="{{$restaurant->code}}" required><br>
+                            Address: <input type="text" name="restaurant_address" value="{{$restaurant->address}}" required><br>
                         </div>
                         @csrf
                         @method('put')

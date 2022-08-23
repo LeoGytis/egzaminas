@@ -98,7 +98,10 @@ class MenuController extends Controller
      */
     public function destroy(Menu $menu)
     {
-        $menu->delete();
-        return redirect()->route('menu.index')->with('pop_message', 'Successfully deleted!');
+        if (!$menu->dishes->count()) {
+            $menu->delete();
+            return redirect()->route('menu.index')->with('pop_message', 'Successfully deleted!');
+        }
+        return redirect()->back()->with('pop_message', 'This menu can not be deleted!');
     }
 }
