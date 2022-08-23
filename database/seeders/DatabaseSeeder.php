@@ -43,19 +43,19 @@ class DatabaseSeeder extends Seeder
         }
 
         // // ========================== Dishes ==========================
-        // foreach (range(1, 10) as $_) {
-        //     $dishes_list = ['Cepelinai', 'Blynai', 'Pica', 'Karbonadatas', 'Pyragas', 'Ledai', 'Makaronai', 'Kepsnys', 'Saslykas', 'Koldunai', 'Ledu kokteilis'];
+        foreach (range(1, 10) as $_) {
+            $dishes_list = ['Cepelinai', 'Blynai', 'Pica', 'Karbonadatas', 'Pyragas', 'Ledai', 'Makaronai', 'Kepsnys', 'Saslykas', 'Koldunai', 'Ledu kokteilis'];
+            $dish_description = 'Labai skanus patiekalas. Prašom paragauti';
+            $photopath = 'http://localhost/egzaminas/public/images/dishes/';
 
-        //     $photopath = 'http://localhost/bandom_v1/public/images/dishes/';
-
-        //     DB::table('dishes')->insert([
-        //         'name' => $dishes_list[rand(0, count($dishes_list) - 1)],
-        //         'price' => rand(1, 20),
-        //         'rate' => 0,
-        //         'photo' => $photopath . rand(1, 10) . '.jpg',
-        //         'restaurant_id' => rand(1, 10),
-        //     ]);
-        // }
+            DB::table('dishes')->insert([
+                'name' => $dishes_list[rand(0, count($dishes_list) - 1)],
+                'description' => $dish_description,
+                // 'description' => $faker->sentence($nbWords = 6, $variableNbWords = true),
+                'photo' => $photopath . rand(1, 10) . '.jpg',
+                'menu_id' => rand(1, 10),
+            ]);
+        }
 
         // ========================== USERS ==========================
         DB::table('users')->insert([

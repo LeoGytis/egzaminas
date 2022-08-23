@@ -20,7 +20,9 @@ class MenuController extends Controller
     public function index(Request $request)
     {
         $menus = Menu::all();
-        return view('menu.index', ['menus' => $menus]);
+
+        $restaurants = Restaurant::all();
+        return view('menu.index', ['menus' => $menus, 'restaurants' => $restaurants,]);
     }
 
     /**
@@ -71,7 +73,8 @@ class MenuController extends Controller
      */
     public function edit(Menu $menu)
     {
-        return view('menu.edit', ['menu' => $menu]);
+        $restaurants = Restaurant::all();
+        return view('menu.edit', ['menu' => $menu, 'restaurants' => $restaurants]);
     }
 
     /**
@@ -84,8 +87,7 @@ class MenuController extends Controller
     public function update(Request $request, Menu $menu)
     {
         $restaurants = Restaurant::all();
-       return view('menu.edit', ['menu' => $menu, 'restaurants' => $restaurants])->with('pop_message', 'Successfully edited!');
- 
+        return redirect()->route('menu.index')->with('pop_message', 'Successfully edited!');
     }
 
     /**
@@ -98,6 +100,5 @@ class MenuController extends Controller
     {
         $menu->delete();
         return redirect()->route('menu.index')->with('pop_message', 'Successfully deleted!');
- 
     }
 }

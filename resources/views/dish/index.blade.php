@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header header-color">List of -----</div>
+                <div class="card-header header-color">List of Dishes</div>
                 <div class="card-body">
                     {{-- ----------- SORT FILTER SEARCH ----------- --}}
 
@@ -43,17 +43,17 @@
                     @foreach ($dishes as $dish)
                     <div class="d-flex justify-content-start grey-line mb-3">
 
-                        {{-- @if($dish->photo)
+                        @if($dish->photo)
                         <div class="image-box mb-3 me-3">
                             <img src="{{$dish->photo}}">
                         </div>
-                        @endif --}}
+                        @endif
 
                         <div class="d-flex flex-column justify-content-between mb-3">
                             <div>
                                 <b>{{$dish->name}}</b><br>
-                                Pirce: {{$dish->price}}€<br>
-                                Restaurant: {{$dish->dishRestaurant->name}} <br>
+                               {{$dish->description}}<br>
+                                {{-- Menu: {{$dish->dishMenu->name}} <br> --}}
                             </div>
                                 {{-- <form class="d-flex flex-row justify-content-start mt-3" method="post" action="{{route('dish.rate')}}">
                                     @csrf
@@ -72,7 +72,7 @@
                                 </form> --}}
 
 
-                            {{-- @if (Auth::user()->role > 9)
+                            @if (Auth::user()->role > 9)
                             <div class="d-flex flex-row justify-content-start mt-1">
                                 <a class="btn btn-outline-success me-1" href="{{route('dish.edit',$dish)}}">EDIT</a><br>
                                 <form method="POST" action="{{route('dish.destroy', $dish)}}">
@@ -80,7 +80,7 @@
                                     <button class="btn btn-outline-secondary" type="submit">DELETE</button>
                                 </form>
                             </div>
-                            @endif --}}
+                            @endif
                             
                         </div>
                     </div>

@@ -12,6 +12,7 @@
                     <div class="d-flex flex-row justify-content-between grey-line mb-3">
                         <div>
                             <b>{{$menu->name}}</b><br>
+                            Restaurant: {{$menu->menuRestaurant->name}} <br>
                         </div>
 
 
