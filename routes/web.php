@@ -1,6 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RestaurantController;
+use App\Http\Controllers\MenuController;
+use App\Http\Controllers\DishController;
+use App\Http\Controllers\OrderController;
+use App\Models\Restaurant;
+use App\Models\Menu;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +39,17 @@ Route::prefix('restaurants')->controller(RestaurantController::class)->name('res
     Route::get('show/{restaurant}', 'show')->name('show')->middleware('rp:user');
 });
 
+// ========================== Menu ==========================
+Route::prefix('menus')->controller(MenuController::class)->name('menu.')->group(function () {
+    Route::get('', 'index')->name('index')->middleware('rp:user');
+    Route::get('create', 'create')->name('create')->middleware('rp:admin');
+    Route::post('store', 'store')->name('store')->middleware('rp:admin');
+    Route::get('edit/{menu}', 'edit')->name('edit')->middleware('rp:admin');
+    Route::put('update/{menu}', 'update')->name('update')->middleware('rp:admin');
+    Route::post('delete/{menu}', 'destroy')->name('destroy')->middleware('rp:admin');
+    Route::get('show/{menu}', 'show')->name('show')->middleware('rp:user');
+    Route::put('delete-picture/{menu}', 'deletePicture')->name('delete-picture')->middleware('rp:admin');
+});
 
 
 // ========================== Dish ==========================

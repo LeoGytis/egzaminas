@@ -21,16 +21,26 @@ class DatabaseSeeder extends Seeder
 
         // ========================== Restaurant ==========================
 
-        // $names = ['Berneliu uzeiga', 'Juodas Vilkas', 'Balta Avele', 'Cepelinai Tau', 'Katmandu', 'Cili pica', 'Pienine', 'Bistro', 'Kultura'];
+        $restaurant_names = ['Berneliu uzeiga', 'Juodas Vilkas', 'Balta Avele', 'Cepelinai Tau', 'Katmandu', 'Cili pica', 'Pienine', 'Bistro', 'Kultura'];
 
-        // foreach (range(1, 10) as $_) {
-        //     DB::table('restaurants')->insert([
-        //         'name' => $names[rand(0, count($names) - 1)],
-        //         'city' => $faker->city,
-        //         'address' => $faker->address,
-        //         'work_time' => '11 - 22',
-        //     ]);
-        // }
+        foreach (range(1, 10) as $_) {
+            DB::table('restaurants')->insert([
+                'name' => $restaurant_names[rand(0, count($restaurant_names) - 1)],
+                'code' => $faker->postcode,
+                'address' => $faker->address,
+            ]);
+        }
+        
+        // ========================== Menu ==========================
+
+        $menu_names = ['Pusryciu meniu', 'Pietu meniu', 'Vakarienes meniu', 'Turisto meniu', 'A la carte'];
+
+        foreach (range(1, 10) as $_) {
+            DB::table('menus')->insert([
+                'name' => $menu_names[rand(0, count($menu_names) - 1)],
+                'restaurant_id' => rand(1, 10),
+            ]);
+        }
 
         // // ========================== Dishes ==========================
         // foreach (range(1, 10) as $_) {

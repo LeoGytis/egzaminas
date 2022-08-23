@@ -10,9 +10,8 @@
                     <form class="d-flex flex-column align-items-center" method="POST" action="{{route('restaurant.update', $restaurant)}}">
                         <div class="col-md-4 ms-3 mb-3">
                             Name: <input type="text" name="restaurant_name" value="{{$restaurant->name}}"><br>
-                            City: <input type="text" name="restaurant_city" value="{{$restaurant->city}}"><br>
+                            Code: <input type="text" name="restaurant_code" value="{{$restaurant->code}}"><br>
                             Address: <input type="text" name="restaurant_address" value="{{$restaurant->address}}"><br>
-                            Work Time: <input type="text" name="restaurant_work_time" value="{{$restaurant->work_time}}"><br>
                         </div>
                         @csrf
                         @method('put')
