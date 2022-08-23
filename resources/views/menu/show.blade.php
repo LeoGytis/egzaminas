@@ -16,15 +16,15 @@
                         <div>
                             <b>{{$dish->name}}</b><br>
                             {{$dish->description}}<br>
-                        <div class="mt-3">
-                            <form method="post" action="{{route('order.add')}}">
-                                @csrf
-                                @method('post')
-                                <input class="order-select me-1" type="number" name="dish_count">
-                                <input type="hidden" value="{{$dish->id}}" name="dish_id">
-                                <button class="btn btn-outline-success me-3" type="submit">Order</button>
-                            </form>
-                        </div>
+                            <div class="mt-3">
+                                <form method="post" action="{{route('order.add')}}">
+                                    @csrf
+                                    @method('post')
+                                    <input class="order-select me-1" type="number" name="dish_count">
+                                    <input type="hidden" value="{{$dish->id}}" name="dish_id">
+                                    <button class="btn btn-outline-success me-3" type="submit">Order</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                     @endif

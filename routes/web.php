@@ -74,7 +74,3 @@ Route::prefix('orders')->controller(OrderController::class)->name('order.')->gro
     Route::put('status/{order}', 'setStatus')->name('status')->middleware('rp:admin');
     Route::get('show', 'showMyOrders')->name('show');
 });
-
-    // Route::post('add-service-to-order', [O::class, 'add'])->name('front-add');
-    // Route::get('my-orders', [O::class, 'showMyOrders'])->name('my-orders');
-    // Route::post('approve/{order}','approve')->name('approve')->middleware('rp:admin');

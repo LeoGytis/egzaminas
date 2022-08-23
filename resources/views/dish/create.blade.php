@@ -9,7 +9,6 @@
                     <form class="d-flex flex-column align-items-center" method="post" action="{{route('dish.store')}}" enctype="multipart/form-data">
                         Name: <input type="text" name="dish_name" required>
                         Description: 
-                        {{-- <input type="text" name="dish_description" required> --}}
                         <textarea class="form-control"name="dish_description" rows="3" required></textarea>
                         <select class="mt-3" name="menu_id">
                             @foreach ($menus as $menu)

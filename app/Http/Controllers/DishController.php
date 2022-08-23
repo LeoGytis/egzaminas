@@ -149,9 +149,6 @@ class DishController extends Controller
             }
         }
 
-        // $dish->delete();
-        // return redirect()->route('dish.index')->with('pop_message', 'Successfully deleted!');
-
         if (!$dish->orders->count()) {
             $dish->delete();
             return redirect()->route('dish.index')->with('pop_message', 'Successfully deleted!');
