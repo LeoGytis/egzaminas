@@ -36,7 +36,7 @@ Route::prefix('restaurants')->controller(RestaurantController::class)->name('res
     Route::get('edit/{restaurant}', 'edit')->name('edit')->middleware('rp:admin');
     Route::put('update/{restaurant}', 'update')->name('update')->middleware('rp:admin');
     Route::post('delete/{restaurant}', 'destroy')->name('destroy')->middleware('rp:admin');
-    Route::get('show/{restaurant}', 'show')->name('show')->middleware('rp:user');
+    Route::get('show/{restaurantId}', 'show')->name('show')->middleware('rp:user');
 });
 
 // ========================== Menu ==========================
@@ -47,7 +47,7 @@ Route::prefix('menus')->controller(MenuController::class)->name('menu.')->group(
     Route::get('edit/{menu}', 'edit')->name('edit')->middleware('rp:admin');
     Route::put('update/{menu}', 'update')->name('update')->middleware('rp:admin');
     Route::post('delete/{menu}', 'destroy')->name('destroy')->middleware('rp:admin');
-    Route::get('show/{menu}', 'show')->name('show')->middleware('rp:user');
+    Route::get('show/{menuid}', 'show')->name('show')->middleware('rp:user');
     Route::put('delete-picture/{menu}', 'deletePicture')->name('delete-picture')->middleware('rp:admin');
 });
 

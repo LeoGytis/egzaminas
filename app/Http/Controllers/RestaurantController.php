@@ -6,6 +6,8 @@ use App\Models\Restaurant;
 use App\Http\Requests\StoreRestaurantRequest;
 use App\Http\Requests\UpdateRestaurantRequest;
 use Illuminate\Http\Request;
+use App\Models\Menu;
+use App\Models\Dish;
 
 class RestaurantController extends Controller
 {
@@ -57,9 +59,14 @@ class RestaurantController extends Controller
      * @param  \App\Models\Restaurant  $restaurant
      * @return \Illuminate\Http\Response
      */
-    public function show(Restaurant $restaurant)
+    public function show(int $restaurantId)
     {
-        //
+        $menus = Menu::all();
+        $dishes = Dish::all();
+
+        $restaurant = Restaurant::where('id', '=', $restaurantId)->first();  //uzklausa grazina viena rezultata
+
+        return view('restaurant.show', ['restaurant' => $restaurant, 'menus' => $menus, 'dishes' => $dishes,]);
     }
 
     /**
@@ -88,7 +95,6 @@ class RestaurantController extends Controller
         $restaurant->address = $request->restaurant_address;
         $restaurant->save();
         return redirect()->route('restaurant.index')->with('pop_message', 'Successfully edited!');
- 
     }
 
     /**

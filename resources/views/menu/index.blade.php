@@ -14,19 +14,16 @@
                             <b>{{$menu->name}}</b><br>
                             Restaurant: {{$menu->menuRestaurant->name}} <br>
                         </div>
-
-
-                        @if (Auth::user()->role > 9)
                         <div class="d-flex flex-row align-items-end mb-2">
+                            <a class="btn btn-success ms-3" href="{{route('menu.show', $menu->id)}}">Show</a><br>
+                            @if (Auth::user()->role > 9)
                             <a class="btn btn-outline-success ms-3" href="{{route('menu.edit',$menu)}}">EDIT</a><br>
                             <form method="POST" action="{{route('menu.destroy', $menu)}}">
                                 @csrf
                                 <button class="btn btn-outline-secondary ms-3" type="submit">DELETE</button>
                             </form>
+                            @endif
                         </div>
-                        @endif
-
-
                     </div>
                     @endforeach
                 </div>

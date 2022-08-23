@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('name');
             $table->unsignedBigInteger('restaurant_id');
             $table->foreign('restaurant_id')->references('id')->on('restaurants');
+            // $table->unsignedBigInteger('dish_id');
+            // $table->foreign('dish_id')->references('id')->on('dishes');
             $table->timestamps();
         });
     }

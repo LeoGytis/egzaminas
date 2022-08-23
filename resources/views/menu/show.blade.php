@@ -5,30 +5,29 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">More information of the autoshop {{$autoshop->name}} {{$autoshop->surname}} </div>
+                <div class="card-header">Information of {{$menu->name}}</div>
                 <div class="card-body">
-                    <b>Name:</b> {{$autoshop->name}}<br>
-                    <b>Address:</b> {{$autoshop->address}}<br>
-                    <b>Phone number:</b> {{$autoshop->phone_nr}}<br><br>
-                    <b>Mechanics:</b><br>
-                        @foreach ($mechanics as $mechanic)
-
-                            @if ($mechanic->mechanicAutoshop->id === $autoshop->id)
-                            {{$mechanic->name}} {{$mechanic->surname}}<br>
-                            @if($mechanic->photo)
-                            <div class="image-box">
-                                <img src="{{$mechanic->photo}}">
-                                @endif
+                    @foreach ($dishes as $dish)
+                    @if ($dish->dishMenu->id === $menu->id)
+                    <div class="d-flex justify-content-start grey-line">
+                        <div class="image-box mb-1">
+                            <img src="{{$dish->photo}}">
+                        </div>
+                            <div>
+                                <b>{{$dish->name}}</b><br>
+                                {{$dish->description}}<br>
                             </div>
-                            @endif
-                        @endforeach
-                    <br><b>Services:</b><br>
-                    @foreach ($mechanics as $mechanic)
-                    @foreach ($services as $service)
-                    @if ($mechanic->mechanicAutoshop->id === $autoshop->id && $service->serviceMechanic->id === $mechanic->id)
-                    {{$service->name}}<br>
+                            <div class="mt-3">
+                                <form method="post" action="{{route('order.add')}}">
+                                    @csrf
+                                    @method('post')
+                                    <input class="order-select me-1" type="number" name="dish_count">
+                                    <input type="hidden" value="{{$dish->id}}" name="dish_id">
+                                    <button class="btn btn-outline-success me-3" type="submit">Order</button>
+                                </form>
+                            </div>
+                    </div>
                     @endif
-                    @endforeach
                     @endforeach
                 </div>
             </div>

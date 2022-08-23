@@ -20,17 +20,19 @@
                         <div>
                             <b>{{$restaurant->name}}</b><br>
                             {{$restaurant->code}}<br>
-                            {{$restaurant->address}}<br>
+                            {{$restaurant->address}}
                         </div>
-                        @if (Auth::user()->role > 9)
                         <div class="d-flex flex-row align-items-end mb-2">
+                            <a class="btn btn-success ms-3" href="{{route('restaurant.show', $restaurant->id)}}">Show</a><br>
+                            @if (Auth::user()->role > 9)
+
                             <a class="btn btn-outline-success ms-3" href="{{route('restaurant.edit',$restaurant)}}">EDIT</a><br>
                             <form method="POST" action="{{route('restaurant.destroy', $restaurant)}}">
                                 @csrf
                                 <button class="btn btn-outline-secondary ms-3" type="submit">DELETE</button>
                             </form>
+                            @endif
                         </div>
-                        @endif
                     </div>
                     @endforeach
                 </div>

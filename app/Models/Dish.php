@@ -14,6 +14,7 @@ class Dish extends Model
         return $this->belongsTo('App\Models\Menu', 'menu_id', 'id');
     }
 
+
     public function menuDishes()
    {
        return $this->hasMany('App\Models\Dish', 'menu_id', 'id');

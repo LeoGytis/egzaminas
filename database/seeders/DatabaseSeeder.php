@@ -32,8 +32,7 @@ class DatabaseSeeder extends Seeder
         }
         
         // ========================== Menu ==========================
-
-        $menu_names = ['Pusryciu meniu', 'Pietu meniu', 'Vakarienes meniu', 'Turisto meniu', 'A la carte'];
+        $menu_names = ['Pusryciu meniu', 'Pietu meniu', 'Vakarienes meniu', 'Turisto meniu', 'A la carte', 'Vaiku meniu', 'Slaptasis', 'Pirato grobis', 'Alkanas nebusi'];
 
         foreach (range(1, 10) as $_) {
             DB::table('menus')->insert([

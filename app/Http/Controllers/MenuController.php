@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreMenuRequest;
 use App\Http\Requests\UpdateMenuRequest;
 use Illuminate\Http\Request;
-use App\Models\Menu;
 use App\Models\Restaurant;
+use App\Models\Menu;
+use App\Models\Dish;
+
 
 
 
@@ -60,9 +62,13 @@ class MenuController extends Controller
      * @param  \App\Models\Menu  $menu
      * @return \Illuminate\Http\Response
      */
-    public function show(Menu $menu)
+    public function show(int $menuId)
     {
-        //
+        $dishes = Dish::all();
+
+        $menu = menu::where('id', '=', $menuId)->first();
+
+        return view('menu.show', ['menu' => $menu, 'dishes' => $dishes]);
     }
 
     /**
@@ -86,7 +92,12 @@ class MenuController extends Controller
      */
     public function update(Request $request, Menu $menu)
     {
-        $restaurants = Restaurant::all();
+        // $restaurants = Restaurant::all();
+        // return redirect()->route('menu.index')->with('pop_message', 'Successfully edited!');
+
+        $menu->name = $request->menu_name;
+        $menu->restaurant_id = $request->restaurant_id;
+        $menu->save();
         return redirect()->route('menu.index')->with('pop_message', 'Successfully edited!');
     }
 
