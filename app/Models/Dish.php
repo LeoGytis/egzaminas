@@ -18,4 +18,9 @@ class Dish extends Model
    {
        return $this->hasMany('App\Models\Dish', 'menu_id', 'id');
    }
+
+   public function orders()
+   {
+       return $this->hasMany(Order::class, 'dish_id', 'id');
+   }
 }

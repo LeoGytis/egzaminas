@@ -14,10 +14,15 @@ class RestaurantController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $restaurants = Restaurant::all();
-        return view('restaurant.index', ['restaurants' => $restaurants]);
+
+        if ($request->search) {
+            $restaurants = Restaurant::where('restaurants.name', 'like', '%' . $request->search . '%')->get();
+        }
+
+        return view('restaurant.index', ['restaurants' => $restaurants, 'search' => $request->search ?? '',]);
     }
 
     /**

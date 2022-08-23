@@ -8,6 +8,13 @@
             <div class="card card-color">
                 <div class="card-header header-color">List of Restaurants</div>
                 <div class="card-body">
+                    <form class="d-flex flex-row justify-content-start mb-3" action="{{route('restaurant.index')}}" method="get">
+                        <div class="col-4 mb-3">
+                            <label>Search</label>
+                            <input class="form-control" type="text" name="search" value="{{$search}}" />
+                        </div>
+                        <button type="submit" class="btn btn-success m-4">Search!</button>
+                    </form>
                     @foreach ($restaurants as $restaurant)
                     <div class="d-flex flex-row justify-content-between grey-line mb-3">
                         <div>
