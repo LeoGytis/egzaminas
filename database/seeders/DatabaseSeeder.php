@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
         // ========================== Menu ==========================
         $menu_names = ['Pusryciu meniu', 'Pietu meniu', 'Vakarienes meniu', 'Turisto meniu', 'A la carte', 'Vaiku meniu', 'Slaptasis', 'Pirato grobis', 'Alkanas nebusi'];
 
-        foreach (range(1, 10) as $_) {
+        foreach (range(1, 20) as $_) {
             DB::table('menus')->insert([
                 'name' => $menu_names[rand(0, count($menu_names) - 1)],
                 'restaurant_id' => rand(1, 10),
@@ -42,7 +42,7 @@ class DatabaseSeeder extends Seeder
         }
 
         // // ========================== Dishes ==========================
-        foreach (range(1, 10) as $_) {
+        foreach (range(1, 30) as $_) {
             $dishes_list = ['Cepelinai', 'Blynai', 'Pica', 'Karbonadatas', 'Pyragas', 'Ledai', 'Makaronai', 'Kepsnys', 'Saslykas', 'Koldunai', 'Ledu kokteilis'];
             $dish_description = 'Labai skanus patiekalas. Prašom paragauti';
             $photopath = 'http://localhost/egzaminas/public/images/dishes/';

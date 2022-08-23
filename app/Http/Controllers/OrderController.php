@@ -46,8 +46,14 @@ class OrderController extends Controller
     {
         $order->status = $request->status;
 
+        // $user = Auth::user()->id;
+        // $user = Auth::user()->first();
+
         // Notification::send(Auth::user()->id, 'Your order status has been changed to');
         // Notification::sendNow(Auth::user()->email, 'Your order status has been changed to' . $request->status);
+
+        // Auth::user()->notify(new OrderStatus($order->status));
+        // Notification::send($user, new OrderStatus($order->status));
 
         $order->save();
         return redirect()->back()->with('pop_message', 'Order status has been changed.');

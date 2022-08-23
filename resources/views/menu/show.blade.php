@@ -10,22 +10,22 @@
                     @foreach ($dishes as $dish)
                     @if ($dish->dishMenu->id === $menu->id)
                     <div class="d-flex justify-content-start grey-line">
-                        <div class="image-box mb-1">
+                        <div class="image-box mb-1 mt-1 me-3">
                             <img src="{{$dish->photo}}">
                         </div>
-                            <div>
-                                <b>{{$dish->name}}</b><br>
-                                {{$dish->description}}<br>
-                            </div>
-                            <div class="mt-3">
-                                <form method="post" action="{{route('order.add')}}">
-                                    @csrf
-                                    @method('post')
-                                    <input class="order-select me-1" type="number" name="dish_count">
-                                    <input type="hidden" value="{{$dish->id}}" name="dish_id">
-                                    <button class="btn btn-outline-success me-3" type="submit">Order</button>
-                                </form>
-                            </div>
+                        <div>
+                            <b>{{$dish->name}}</b><br>
+                            {{$dish->description}}<br>
+                        <div class="mt-3">
+                            <form method="post" action="{{route('order.add')}}">
+                                @csrf
+                                @method('post')
+                                <input class="order-select me-1" type="number" name="dish_count">
+                                <input type="hidden" value="{{$dish->id}}" name="dish_id">
+                                <button class="btn btn-outline-success me-3" type="submit">Order</button>
+                            </form>
+                        </div>
+                        </div>
                     </div>
                     @endif
                     @endforeach
